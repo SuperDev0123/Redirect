@@ -6,10 +6,10 @@ const http = require('http');
 const dbmanager = require("./util/dbmanager")
 // const { response } = require('express');
 
-// const targetUrl = process.env.TARGET_URL || 'https://upwork.com'; // Run localtunnel like `lt -s rscraper -p 8080 --print-requests`; then visit https://yourname.loca.lt/todos/1 .
+const targetUrl = process.env.TARGET_URL || 'https://upwork.com'; // Run localtunnel like `lt -s rscraper -p 8080 --print-requests`; then visit https://yourname.loca.lt/todos/1 .
 
-const proxyServerPort = process.env.PROXY_SERVER_PORT || 80;
-let targetUrl = 'https://google.com'
+const proxyServerPort = process.env.PROXY_SERVER_PORT || 3000;
+// let targetUrl = 'https://upwork.com'
 
 // eslint-disable-next-line max-lines-per-function
 app.use('/', async function (clientRequest, clientResponse) {    
@@ -70,6 +70,8 @@ let test = async () => {
     console.log(targetUrl)
 }
 
-test()
+// test()
 
-app.listen(proxyServerPort);
+app.listen(proxyServerPort, () => {
+    console.log(`open in ${proxyServerPort} port`)
+});
